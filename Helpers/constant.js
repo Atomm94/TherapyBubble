@@ -6,11 +6,6 @@ const therapistServices = Object.freeze({
     PLASTIC_SURGEON: 'plastic surgeon'
 })
 
-const sessionFormat = Object.freeze({
-    ONLINE: 'online',
-    OFFLINE: 'offline'
-})
-
 const Steps = Object.freeze({
     ONE: 'one',
     TWO: 'two',
@@ -33,7 +28,6 @@ const productsType = Object.freeze({
 export {
     error,
     therapistServices,
-    sessionFormat,
     Steps,
     categories,
     productsType

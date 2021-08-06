@@ -13,11 +13,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/Media'));
 
-
 app.use('/api/therapist/log', tokenTherapist);
 app.use('/api/admin/log', tokenAdmin);
 app.use('/api/user/log', tokenUser);
-app.use('/api', route)
+app.use('/api', route);
 
 app.listen(port, () => {
     console.log(`Server started with port ${port}`);

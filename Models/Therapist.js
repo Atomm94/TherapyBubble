@@ -26,25 +26,23 @@ const therapistSchema = new Schema({
     phoneNumber: String,
     country: String,
     businessName: String,
-    age: Number,
+    age: {
+        type: Number,
+        min: 18,
+        required: true
+    },
     services: {
         type: String,
         enum: Object.values(therapistServices)
     },
-    AvgSessFee: String,
-    sessionFormat: {
-        type: String,
-        enum: Object.values(sessionFormat),
-        default: sessionFormat.OFFLINE
-    },
+    postalCode: String,
     step: {
         type: String,
         enum: Object.values(Steps),
         default: Steps.ONE
     },
-    ageSpecialty: String,
-    treatmentApp: String,
-    appDescription: String,
+    yearsOfExp: String,
+    profBody: String,
     bookings: [{
         type: Schema.Types.ObjectId,
         ref: "booking"

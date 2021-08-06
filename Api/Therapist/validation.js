@@ -16,16 +16,14 @@ const registerStepTwo = Joi.object({
     phoneNumber: Joi.string().required(),
     country: Joi.string().required(),
     businessName: Joi.string(),
-    age: Joi.string()
+    age: Joi.string().min(18).required()
 })
 
 const registerStepThree = Joi.object({
     services: Joi.string().valid(...Object.values(therapistServices)),
-    AvgSessFee: Joi.string(),
-    sessionFormat: Joi.string().valid(...Object.values(sessionFormat)),
-    ageSpecialty: Joi.string(),
-    treatmentApp: Joi.string(),
-    appDescription: Joi.string()
+    postalCode: Joi.string(), //postCode
+    yearsOfExp: Joi.string(), //years of experience
+    profBody: Joi.string(), // who is your professional governing body?
 })
 
 const productSchema = Joi.object({
