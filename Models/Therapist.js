@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import {
     sessionFormat,
     Steps,
-    therapistServices,
+    therapistServices, validCountry,
 } from "../Helpers/constant";
 
 const therapistSchema = new Schema({
@@ -24,18 +24,26 @@ const therapistSchema = new Schema({
         required: true
     },
     phoneNumber: String,
-    country: String,
-    businessName: String,
-    age: {
-        type: Number,
-        min: 18,
+    country: {
+        type: String,
+        enum: Object.values(validCountry),
         required: true
+    },
+    businessName: String,
+    certificate: {
+        type: String,
+        required: true
+    },
+    sessionFormat: {
+        type: String,
+        enum: Object.values(sessionFormat),
+        default: sessionFormat.ONLINE
     },
     services: {
         type: String,
         enum: Object.values(therapistServices)
     },
-    postalCode: String,
+    postCode: String,
     step: {
         type: String,
         enum: Object.values(Steps),

@@ -59,6 +59,11 @@ const registerFinishStep = async (req, res) => {
     try {
         const { userId } = req.query;
         const body = req.body;
+        dataFiles = fs.readdirSync('Media');
+        let fullUrl = req.protocol + '://' + req.get('host');
+        if(req.file) {
+            body.certificate = fullUrl + '/' + req.file.filename;
+        }
         body.step = Steps.FINISH;
         body.createdAt = Date.now();
         const createTherapistStepThree = await therapistModel.updateOne({_id: userId}, body);
@@ -66,6 +71,13 @@ const registerFinishStep = async (req, res) => {
         res.message = 'In finish step therapist registered successfully!';
         return successHandler(res, findTherapist);
     } catch (err) {
+        if (req.file) {
+            dataFiles = fs.readdirSync('Media');
+            if (dataFiles.includes(req.file.filename)) {
+                let index = dataFiles.indexOf(req.file.filename)
+                let remove = await fs.unlinkSync(`Media/${dataFiles[index]}`);
+            }
+        }
         return errorHandler(res, err);
     }
 }

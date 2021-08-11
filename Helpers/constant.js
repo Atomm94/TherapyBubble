@@ -25,9 +25,20 @@ const productsType = Object.freeze({
     PACKAGE: 'package'
 })
 
+const sessionFormat = Object.freeze({
+    ONLINE: 'online',
+    OFFLINE: 'offline'
+})
+
+const validCountry = Object.freeze({
+    UK: 'uk'
+})
+
 export {
     error,
     therapistServices,
+    sessionFormat,
+    validCountry,
     Steps,
     categories,
     productsType

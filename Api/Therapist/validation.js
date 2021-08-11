@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import {categories, sessionFormat, therapistServices} from "../../Helpers/constant";
+import {categories, sessionFormat, therapistServices, validCountry} from "../../Helpers/constant";
 const validator = require('express-joi-validation').createValidator({})
 
 const registerStepOne = Joi.object({
@@ -14,14 +14,15 @@ const registerStepOne = Joi.object({
 
 const registerStepTwo = Joi.object({
     phoneNumber: Joi.string().required(),
-    country: Joi.string().required(),
-    businessName: Joi.string(),
-    age: Joi.string().min(18).required()
+    country: Joi.string().valid(...Object.values(validCountry)).required(),
+    businessName: Joi.string()
 })
 
 const registerStepThree = Joi.object({
     services: Joi.string().valid(...Object.values(therapistServices)),
-    postalCode: Joi.string(), //postCode
+    certificate: Joi.string().required(),
+    postCode: Joi.string(), //postCode
+    sessionFormat: Joi.string().valid(...Object.values(sessionFormat)),
     yearsOfExp: Joi.string(), //years of experience
     profBody: Joi.string(), // who is your professional governing body?
 })
