@@ -13,7 +13,7 @@ const tokenTherapist = express();
 
 tokenTherapist.use('/', async (req, res, next) => {
     const jwtAuth = req.authorization || req.headers['authorization'];
-    jwt.verify(jwtAuth, process.env.JWT_SECRET_KEY, async (err, user) => {
+    jwt.verify(jwtAuth, "therapy@14.02.2021", async (err, user) => {
         if (err) {
             return errorHandler(res, err);
         }
@@ -29,7 +29,7 @@ tokenTherapist.use('/', async (req, res, next) => {
 
 tokenAdmin.use('/', async (req, res, next) => {
     const jwtAuth = req.authorization || req.headers['authorization'];
-    jwt.verify(jwtAuth, process.env.JWT_SECRET_KEY, async (err, user) => {
+    jwt.verify(jwtAuth, "therapy@14.02.2021", async (err, user) => {
         if (err) {
             return errorHandler(res, err);
         }
@@ -45,7 +45,7 @@ tokenAdmin.use('/', async (req, res, next) => {
 
 tokenUser.use('/', async (req, res, next) => {
     const jwtAuth = req.authorization || req.headers['authorization'];
-    jwt.verify(jwtAuth, process.env.JWT_SECRET_KEY, async (err, user) => {
+    jwt.verify(jwtAuth, "therapy@14.02.2021", async (err, user) => {
         if (err) {
             return errorHandler(res, err);
         }
@@ -61,9 +61,9 @@ tokenUser.use('/', async (req, res, next) => {
 
 
 const createJwtToken = async (data, expire) => {
-    let getToken = await jwt.sign({data: data}, process.env.JWT_SECRET_KEY);
+    let getToken = await jwt.sign({data: data}, "therapy@14.02.2021");
     if (expire) {
-        getToken = await jwt.sign({data: data}, process.env.JWT_SECRET_KEY, {
+        getToken = await jwt.sign({data: data}, "therapy@14.02.2021", {
             expiresIn: expire
         });
     }

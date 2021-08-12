@@ -5,7 +5,7 @@ env.config();
 const Stripe_Key = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(Stripe_Key);
 
-mongoose.connect(process.env.DATABASE_URI, {
+mongoose.connect('mongodb+srv://At11:atmak11@cluster0.d1re6.mongodb.net/therapyBubble?retryWrites=true&w=majority', {
     useFindAndModify: true,
     useCreateIndex: true,
     useNewUrlParser: true,
