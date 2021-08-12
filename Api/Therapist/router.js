@@ -20,7 +20,7 @@ therapist.get('/log/getYourCreditCard', controllers.retrieveCard);
 therapist.get('/log/getYourGiftCards', controllers.getYourGiftCards);
 therapist.post('/registerStepOne', validation.stepOneValidation, controllers.registerStepOne);
 therapist.post('/registerStepTwo', validation.stepTwoValidation, controllers.registerStepTwo);
-therapist.post('/registerFinishStep', registerUpload, validation.finishStepValidation, controllers.registerFinishStep);
+therapist.post('/registerFinishStep', registerUpload, controllers.registerFinishStep);
 therapist.post('/log/addProduct', upload, controllers.addProduct);
 therapist.post('/log/addGiftCard', validation.giftValidation, controllers.addGiftCards);
 therapist.post('/log/addNewCard', controllers.addNewCard);
